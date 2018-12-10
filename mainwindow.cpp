@@ -105,7 +105,7 @@ void MainWindow::on_HW3_clicked()
 
     hw3Window = new HW3(this);
     hw3Window->show();
-
+    qDebug() << "change";
     connect(this, SIGNAL(sendFrame(cv::Mat)), hw3Window, SLOT(getFrame(cv::Mat)));
     emit sendFrame(src);
 }
