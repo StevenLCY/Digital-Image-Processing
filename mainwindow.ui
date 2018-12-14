@@ -86,6 +86,9 @@
      <string>HW3</string>
     </property>
    </widget>
+   <zorder>processedImg</zorder>
+   <zorder>originalImg</zorder>
+   <zorder>HW3</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">

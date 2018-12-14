@@ -69,6 +69,9 @@ public:
         HW3->setObjectName(QStringLiteral("HW3"));
         HW3->setGeometry(QRect(1070, 50, 121, 41));
         MainWindow->setCentralWidget(centralWidget);
+        processedImg->raise();
+        originalImg->raise();
+        HW3->raise();
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
         menuBar->setGeometry(QRect(0, 0, 1202, 21));

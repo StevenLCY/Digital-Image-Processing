@@ -32,9 +32,13 @@ public:
     ~MainWindow();
 
 private slots:
+    void getProcImg(const cv::Mat &img);
+
     void on_actionOpen_triggered();
 
     void on_HW3_clicked();
+
+
 
 private:
     Ui::MainWindow *ui;
@@ -43,6 +47,7 @@ private:
     HW3 *hw3Window;
 
     cv::Mat src;
+    cv::Mat display;
 //    bool GrayYet;
 //    int color;
 //    int status;

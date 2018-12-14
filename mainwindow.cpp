@@ -59,8 +59,9 @@ void MainWindow::showImage(const Mat &mat_original, QLabel* label){
     {
        cv::resize(mat_original,mat_processed,Size((mat_original.cols*height)/mat_original.rows,height));
     }
-
+    //imshow("proc", mat_processed);
     label->setPixmap((QPixmap::fromImage(this->Mat2QImage(mat_processed))).scaled(label->width(),label->height(),Qt::KeepAspectRatio));
+    //ui->processedImg->setPixmap((QPixmap::fromImage(this->Mat2QImage(mat_processed))).scaled(ui->processedImg->width(),ui->processedImg->height(),Qt::KeepAspectRatio));
 
 }
 
@@ -84,7 +85,7 @@ void MainWindow::on_actionOpen_triggered()
         pixmap = QPixmap::fromImage(*Image);
     }
     cv::Mat mat;
-    qDebug() << fileName;
+    //qDebug() << fileName;
     src = cv::imread(fileName.toStdString());
     //cv::imshow("show", mat);
     int width = src.cols;
@@ -99,13 +100,20 @@ void MainWindow::on_actionOpen_triggered()
 
 
 }
+void MainWindow::getProcImg(const cv::Mat &img){
+    display = img.clone();
+    //cv::imshow("main", display);
+    showImage(display, ui->processedImg);
 
+}
 void MainWindow::on_HW3_clicked()
 {
 
     hw3Window = new HW3(this);
     hw3Window->show();
-    qDebug() << "change 02";
+
     connect(this, SIGNAL(sendFrame(cv::Mat)), hw3Window, SLOT(getFrame(cv::Mat)));
+    connect(hw3Window, SIGNAL(sendProcImg(const cv::Mat&)), this, SLOT(getProcImg(const cv::Mat&)));
     emit sendFrame(src);
 }
+

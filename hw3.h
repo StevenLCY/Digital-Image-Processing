@@ -22,10 +22,19 @@ private slots:
 
     void on_boxFilter_clicked();
 
+    void on_gaussianFilter_clicked();
+
+    void on_bilateralFilter_clicked();
+
+    void on_sobelFilter_clicked();
+
 private:
-    cv::Mat convolution(cv::Mat src, std::vector<std::vector <int> > kernel, int size);
+    //cv::Mat convolution(cv::Mat src, std::vector<std::vector <int> > kernel, int size);
+    void applyConvolution(const cv::Mat &src, cv::Mat &dst, const cv::Mat &kernel);
     Ui::HW3 *ui;
     cv::Mat src;
+signals:
+    void sendProcImg(const cv::Mat &img);
 
 };
 

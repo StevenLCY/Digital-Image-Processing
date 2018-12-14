@@ -28,30 +28,34 @@ QT_BEGIN_NAMESPACE
 class Ui_HW3
 {
 public:
-    QWidget *widget;
-    QVBoxLayout *verticalLayout_2;
+    QWidget *layoutWidget;
+    QVBoxLayout *_2;
     QHBoxLayout *horizontalLayout;
     QLabel *label;
     QLCDNumber *lcdNumber;
     QVBoxLayout *verticalLayout;
     QSlider *horizontalSlider;
-    QPushButton *pushButton;
-    QPushButton *pushButton_2;
+    QPushButton *boxFilter;
+    QPushButton *gaussianFilter;
+    QPushButton *bilateralFilter;
+    QPushButton *sobelFilter;
 
     void setupUi(QDialog *HW3)
     {
         if (HW3->objectName().isEmpty())
             HW3->setObjectName(QStringLiteral("HW3"));
         HW3->resize(400, 300);
-        widget = new QWidget(HW3);
-        widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(30, 50, 161, 201));
-        verticalLayout_2 = new QVBoxLayout(widget);
-        verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
-        verticalLayout_2->setContentsMargins(0, 0, 0, 0);
+        layoutWidget = new QWidget(HW3);
+        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
+        layoutWidget->setGeometry(QRect(30, 50, 193, 231));
+        _2 = new QVBoxLayout(layoutWidget);
+        _2->setSpacing(10);
+        _2->setObjectName(QStringLiteral("_2"));
+        _2->setContentsMargins(10, 10, 10, 10);
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        label = new QLabel(widget);
+        horizontalLayout->setContentsMargins(8, 8, 8, 8);
+        label = new QLabel(layoutWidget);
         label->setObjectName(QStringLiteral("label"));
         QFont font;
         font.setFamily(QStringLiteral("3ds"));
@@ -60,17 +64,17 @@ public:
 
         horizontalLayout->addWidget(label);
 
-        lcdNumber = new QLCDNumber(widget);
+        lcdNumber = new QLCDNumber(layoutWidget);
         lcdNumber->setObjectName(QStringLiteral("lcdNumber"));
 
         horizontalLayout->addWidget(lcdNumber);
 
 
-        verticalLayout_2->addLayout(horizontalLayout);
+        _2->addLayout(horizontalLayout);
 
         verticalLayout = new QVBoxLayout();
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
-        horizontalSlider = new QSlider(widget);
+        horizontalSlider = new QSlider(layoutWidget);
         horizontalSlider->setObjectName(QStringLiteral("horizontalSlider"));
         horizontalSlider->setMinimum(3);
         horizontalSlider->setMaximum(48);
@@ -80,21 +84,30 @@ public:
 
         verticalLayout->addWidget(horizontalSlider);
 
-        pushButton = new QPushButton(widget);
-        pushButton->setObjectName(QStringLiteral("pushButton"));
+        boxFilter = new QPushButton(layoutWidget);
+        boxFilter->setObjectName(QStringLiteral("boxFilter"));
 
-        verticalLayout->addWidget(pushButton);
+        verticalLayout->addWidget(boxFilter);
 
-        pushButton_2 = new QPushButton(widget);
-        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
+        gaussianFilter = new QPushButton(layoutWidget);
+        gaussianFilter->setObjectName(QStringLiteral("gaussianFilter"));
 
-        verticalLayout->addWidget(pushButton_2);
+        verticalLayout->addWidget(gaussianFilter);
+
+        bilateralFilter = new QPushButton(layoutWidget);
+        bilateralFilter->setObjectName(QStringLiteral("bilateralFilter"));
+
+        verticalLayout->addWidget(bilateralFilter);
 
 
-        verticalLayout_2->addLayout(verticalLayout);
+        _2->addLayout(verticalLayout);
 
+        sobelFilter = new QPushButton(HW3);
+        sobelFilter->setObjectName(QStringLiteral("sobelFilter"));
+        sobelFilter->setGeometry(QRect(260, 50, 101, 21));
 
         retranslateUi(HW3);
+        QObject::connect(horizontalSlider, SIGNAL(valueChanged(int)), lcdNumber, SLOT(display(int)));
 
         QMetaObject::connectSlotsByName(HW3);
     } // setupUi
@@ -103,8 +116,10 @@ public:
     {
         HW3->setWindowTitle(QApplication::translate("HW3", "Dialog", Q_NULLPTR));
         label->setText(QApplication::translate("HW3", "Kernal Size:", Q_NULLPTR));
-        pushButton->setText(QApplication::translate("HW3", "Box Filter", Q_NULLPTR));
-        pushButton_2->setText(QApplication::translate("HW3", "Gaussian Filter", Q_NULLPTR));
+        boxFilter->setText(QApplication::translate("HW3", "Box Filter", Q_NULLPTR));
+        gaussianFilter->setText(QApplication::translate("HW3", "Gaussian Filter", Q_NULLPTR));
+        bilateralFilter->setText(QApplication::translate("HW3", "Bilateral Filter", Q_NULLPTR));
+        sobelFilter->setText(QApplication::translate("HW3", "Sobel filter", Q_NULLPTR));
     } // retranslateUi
 
 };
