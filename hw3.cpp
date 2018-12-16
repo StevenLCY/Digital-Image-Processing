@@ -101,3 +101,14 @@ void HW3::on_sobelFilter_clicked()
 //    cv::imshow("test", dst);
     emit sendProcImg(dst);
 }
+
+void HW3::on_LoG_clicked()
+{
+    cv::Mat img = src.clone();
+    cv::cvtColor(img, img ,cv::COLOR_BGR2GRAY);
+    cv::Mat dst;
+    cv::GaussianBlur(img, img, cv::Size(3,3), 3);
+    cv::Laplacian(img, dst, CV_16S);
+    cv::convertScaleAbs(dst, dst);
+    emit sendProcImg(dst);
+}

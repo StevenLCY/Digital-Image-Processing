@@ -119,14 +119,27 @@
   <widget class="QPushButton" name="sobelFilter">
    <property name="geometry">
     <rect>
-     <x>260</x>
+     <x>250</x>
      <y>50</y>
-     <width>101</width>
+     <width>111</width>
      <height>21</height>
     </rect>
    </property>
    <property name="text">
     <string>Sobel filter</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="LoG">
+   <property name="geometry">
+    <rect>
+     <x>250</x>
+     <y>80</y>
+     <width>111</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Laplacian of Gaussain</string>
    </property>
   </widget>
  </widget>
