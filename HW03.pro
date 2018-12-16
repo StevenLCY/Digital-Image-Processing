@@ -25,8 +25,8 @@ INCLUDEPATH += $$quote(C:\opencv\build\include)\
                $$quote(C:\opencv\build\include\opencv)\
                $$quote(C:\opencv\build\include\opencv2)\
 
-LIBS += $$quote(C:\opencv_3.0\opencv\build\x64\vc14\lib\opencv_world320.lib)\
-        $$quote(C:\opencv_3.0\opencv\build\x64\vc14\lib\opencv_world320d.lib)\
+LIBS += $$quote(C:\opencv\build\x64\vc14\lib\opencv_world320.lib)\
+        $$quote(C:\opencv\build\x64\vc14\lib\opencv_world320d.lib)\
 
 
 CONFIG += c++11
